@@ -10,7 +10,7 @@ body{
 }
 
 .landing-page{
-    background: white url(/images/bg1.jpg) no-repeat scroll center;
+    background: white url(/public/images/bg1.jpg) no-repeat scroll center;
     height: 100vh;
     background-size: cover;
     color: white;
