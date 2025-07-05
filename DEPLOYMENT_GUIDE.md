@@ -30,7 +30,7 @@ background: white url(/images/bg1.jpg) no-repeat scroll center;
 ## Common Deployment Issues and Solutions
 
 ### 1. **Base Path Issues**
-If deploying to a subdirectory (e.g., `https://example.com/myapp/`), you need to configure the base path in `vite.config.js`:
+If deploying to a subdirectory (e.g., `https://example.com/quizapp/`), you need to configure the base path in `vite.config.js`:
 
 ```javascript
 import { defineConfig } from 'vite'
@@ -39,7 +39,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/myapp/', // Add this line with your subdirectory
+  base: '/quizapp/', // Add this line with your subdirectory
   server: {
     port: 5175,
   },
@@ -50,7 +50,7 @@ export default defineConfig({
 Ensure your hosting platform serves static files correctly:
 - **Netlify/Vercel:** Just upload the `dist` folder
 - **Apache/Nginx:** Configure to serve `index.html` for all routes
-- **GitHub Pages:** Use `base: '/repository-name/'` in config
+- **GitHub Pages:** Use `base: '/quizapp/'` in config (or your repository name)
 
 ### 3. **Asset Loading Issues**
 If images/assets don't load:
