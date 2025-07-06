@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react(),
     tailwindcss()],
     server: {
-    port: 5175, // 🔥 set your desired port here
+    port: 5175, //
   },
 })

@@ -3,10 +3,12 @@ let questions = [];
 let correctAnswers = 0;
 let totalQuestions = 0;
 
+
 // Fetch questions from API
 async function fetchQuestions() {
     try {
-        const apiUrl = import.meta.env.VITE_API_URL;
+        const apiUrl = 'https://quiz-latest-3.onrender.com';
+
 
         const response = await fetch(`${apiUrl}/api/questions`);
 
