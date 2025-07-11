@@ -77,6 +77,45 @@ quiz_app/
 cd frontend
 npm install
 npm run dev
+cd backend
+```
+
+
+## 🖥️ Backend  Setup
+```bash  If using Maven
+./mvnw spring-boot:run
+
+# Or if using Gradle
+./gradlew bootRun
+```
+---
+
+📦 Example Quiz Question Format (JSON)
+
+{
+  "questionText": "What is the size of an int in Java?",
+  "options": ["2 bytes", "4 bytes", "8 bytes", "Depends on system"],
+  "correctAnswer": "4 bytes",
+  "subject": { "name": "java" }
+}
+---
+💾 Database Schema (Entities)
+| Entity                | Fields                                                      |
+| --------------------- | ----------------------------------------------------------- |
+| **Subject**           | `id`, `name`                                                |
+| **QuizQuestion**      | `id`, `questionText`, `correctAnswer`, `options`, `subject` |
+| **User** *(optional)* | `id`, `username`, `password`                                |
+
+---
+
+🛠️ Technologies Used
+
+
+
+
+
+
+
 
 
 
