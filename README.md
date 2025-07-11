@@ -20,6 +20,7 @@ quiz_app/
 - Login/register authentication flow
 - Routing with React Router
 - Data stored locally or fetched via API
+- 
 
 ### 🔹 Backend (Spring Boot)
 - RESTful APIs for fetching quiz questions and posting results
