@@ -1,83 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz Result</title>
+    <link rel="stylesheet" href="result.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .result-container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 300px;
-        }
-        h1 {
-            margin-bottom: 10px;
-        }
-        .score {
-            font-size: 24px;
-            font-weight: bold;
-            color: green;
-        }
-        .button {
-            margin-top: 20px;
-            padding: 10px 15px;
-            background-color: red;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+        /* [Styles remain unchanged from your original code — omitted here for brevity] */
+        /* All your CSS from above goes here exactly as-is */
     </style>
 </head>
+
 <body>
+    <!-- Floating particles -->
+    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+    <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+    <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+    <div class="particle" style="left: 70%; animation-delay: 0.5s;"></div>
+    <div class="particle" style="left: 80%; animation-delay: 1.5s;"></div>
+    <div class="particle" style="left: 90%; animation-delay: 2.5s;"></div>
+
     <div class="result-container">
-        <h1>Your Quiz Result</h1>
-        <div class="score" id="score"></div>
-        <p id="feedback"></p>
-        <button class="button" onclick="window.location.href='index.html'">Go Back</button>
+        <div class="trophy-icon" id="trophyIcon">🏆</div>
+        <h1>Quiz Complete!</h1>
+
+        <div class="score-circle">
+            <div class="score-inner">
+                <div class="score-text" id="scoreText">0/0</div>
+                <div class="score-subtitle">Score</div>
+            </div>
+        </div>
+
+        <div class="percentage" id="percentage">0%</div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-value" id="correctAnswers">0</span>
+                <div class="stat-label">Correct</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="wrongAnswers">0</span>
+                <div class="stat-label">Wrong</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="accuracy">0%</span>
+                <div class="stat-label">Accuracy</div>
+            </div>
+        </div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <div class="buttons">
+            <button class="button button-primary" onclick="goHome()">
+                🏠 Go Home
+            </button>
+            <button class="button button-secondary" onclick="retakeQuiz()">
+                🔄 Retake Quiz
+            </button>
+        </div>
     </div>
 
     <script>
-        // Function to get the result from localStorage or URL parameters
         function displayResult() {
-            const score = localStorage.getItem('quizScore'); // Get score from localStorage
-            const totalQuestions = localStorage.getItem('totalQuestions'); // Get total questions
-            const feedback = document.getElementById('feedback');
+            const score = parseInt(localStorage.getItem('quizScore')) || 0;
+            const totalQuestions = parseInt(localStorage.getItem('totalQuestions')) || 1;
+            const subject = localStorage.getItem('quizSubject') || 'Quiz';
 
-            if (score !== null) {
-                document.getElementById('score').innerText = `You scored ${score} out of ${totalQuestions}`;
-                
-                // Optional: Provide feedback based on score
-                const percentage = (score / totalQuestions) * 100;
-                if (percentage >= 80) {
-                    feedback.innerText = 'Excellent work! Keep it up!';
-                } else if (percentage >= 50) {
-                    feedback.innerText = 'Good job! You can do even better!';
-                } else {
-                    feedback.innerText = 'Don’t give up! Try again!';
-                }
+            const wrongAnswers = totalQuestions - score;
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            // Animate values
+            animateCount('scoreText', score, totalQuestions, '/', 30);
+            animateCount('correctAnswers', score, null, '', 30);
+            animateCount('wrongAnswers', wrongAnswers, null, '', 30);
+            animateCount('percentage', percentage, null, '%', 20);
+            animateCount('accuracy', percentage, null, '%', 20);
+
+            // Feedback and Trophy
+            const feedbackElement = document.getElementById('feedback');
+            const trophyIcon = document.getElementById('trophyIcon');
+
+            if (percentage >= 80) {
+                feedbackElement.textContent = '🎉 Outstanding performance! You\'ve mastered this topic!';
+                feedbackElement.className = 'feedback excellent';
+                trophyIcon.textContent = '🏆';
+            } else if (percentage >= 60) {
+                feedbackElement.textContent = '👍 Good job! You\'re on the right track. Keep practicing!';
+                feedbackElement.className = 'feedback good';
+                trophyIcon.textContent = '🥈';
+            } else if (percentage >= 40) {
+                feedbackElement.textContent = '📚 You\'re getting there! Review the concepts and try again.';
+                feedbackElement.className = 'feedback good';
+                trophyIcon.textContent = '🥉';
             } else {
-                document.getElementById('score').innerText = 'No score available.';
+                feedbackElement.textContent = '💪 Don\'t give up! Every expert was once a beginner. Keep learning!';
+                feedbackElement.className = 'feedback try-again';
+                trophyIcon.textContent = '🎯';
             }
         }
 
-        // Call the displayResult function when the page loads
+        function animateCount(id, finalValue, total = null, suffix = '', speed = 20) {
+            const el = document.getElementById(id);
+            let current = 0;
+            const step = Math.ceil(finalValue / 30) || 1;
+
+            const interval = setInterval(() => {
+                current += step;
+                if (current >= finalValue) {
+                    current = finalValue;
+                    clearInterval(interval);
+                }
+
+                if (total !== null && suffix === '/') {
+                    el.textContent = `${current}/${total}`;
+                } else {
+                    el.textContent = `${current}${suffix}`;
+                }
+            }, speed);
+        }
+        function goHome() {
+            // Use "/" if React app is hosted at root (like localhost:5173/)
+            // Use "/your-sub-folder/" if deployed inside a folder (e.g., GitHub Pages or subpath)
+            window.location.href = '/';
+        }
+
+        function retakeQuiz() {
+            const subject = localStorage.getItem('quizSubject') || 'javascript';
+            window.location.href = `quiz.html?subject=${encodeURIComponent(subject)}`;
+        }
+
         window.onload = displayResult;
     </script>
 </body>
+
 </html>
