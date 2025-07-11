@@ -1,0 +1,14 @@
+/Users/saurabh/Desktop/Quiz_backend/src/main/java/com/example/Quiz_backend/QuizBackendApplication.java
+/Users/saurabh/Desktop/Quiz_backend/src/main/java/com/example/Quiz_backend/config/WebConfig.java
+/Users/saurabh/Desktop/Quiz_backend/src/main/java/com/example/Quiz_backend/controller/AuthController.java
+/Users/saurabh/Desktop/Quiz_backend/src/main/java/com/example/Quiz_backend/controller/QuizController.java
+/Users/saurabh/Desktop/Quiz_backend/src/main/java/com/example/Quiz_backend/dto/LoginRequest.java
+/Users/saurabh/Desktop/Quiz_backend/src/main/java/com/example/Quiz_backend/dto/SubjectQuestionResponse.java
+/Users/saurabh/Desktop/Quiz_backend/src/main/java/com/example/Quiz_backend/entity/QuizQuestion.java
+/Users/saurabh/Desktop/Quiz_backend/src/main/java/com/example/Quiz_backend/entity/Subject.java
+/Users/saurabh/Desktop/Quiz_backend/src/main/java/com/example/Quiz_backend/entity/Users.java
+/Users/saurabh/Desktop/Quiz_backend/src/main/java/com/example/Quiz_backend/repo/QuestionRepo.java
+/Users/saurabh/Desktop/Quiz_backend/src/main/java/com/example/Quiz_backend/repo/SubjectRepository.java
+/Users/saurabh/Desktop/Quiz_backend/src/main/java/com/example/Quiz_backend/repo/UserRepository.java
+/Users/saurabh/Desktop/Quiz_backend/src/main/java/com/example/Quiz_backend/service/QuestionService.java
+/Users/saurabh/Desktop/Quiz_backend/src/main/java/com/example/Quiz_backend/service/UserService.java

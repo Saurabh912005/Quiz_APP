@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.example.Quiz_backend.QuizBackendApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 12.09 s -- in com.example.Quiz_backend.QuizBackendApplicationTests
